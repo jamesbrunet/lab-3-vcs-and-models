@@ -16,8 +16,8 @@
 8) Configure it to run manage.py with the parameter runserver:
 ![finished run config](readme_assets/finished-run-configuration.png)
 9) In your project folder (lab-3-vcs-and-models/studentdemo) create a file called `.env`
-10) Generate a secret key by running `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'` in the terminal
-11) Edit `.env` with your text file, and add a line that says `SECRET_KEY="your-secret-key-here"`
+10) Generate a secret key by running `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'` in the terminal. Copy the output.
+11) Edit `.env` (created in part 9) with a text editor like notepad, and add a line that says `SECRET_KEY="your-secret-key-here"`. Paste the output from part 10 into 'your-secret-key-here'.
 12) On the terminal, navigate to `lab-3-vcs-and-models/studentdemo` and run `python manage.py migrate`
 13) Run the server by clicking the play button for the run configuration you set up
 14) Navigate to 127.0.0.1:8000! Your app should load.
