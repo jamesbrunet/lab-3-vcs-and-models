@@ -1,5 +1,5 @@
-# lab-3-vcs-and-models
-
+# lab-3-vcs-and-models changechangechangechangechangechangechange
+change
 ## Steps to get this django app running on your own server
 
 1) Open a terminal and navigate to the folder you want to create your project in (e.g. `cd ~Documents/Code`)
