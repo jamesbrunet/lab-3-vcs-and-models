@@ -1,4 +1,5 @@
 # lab-3-vcs-and-models
+**by Rachel Lee**
 
 ## Steps to get this django app running on your own server
 
