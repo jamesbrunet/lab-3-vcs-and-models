@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>My cool to-do app</h1>
@@ -21,7 +22,30 @@ Time:  {% now "jS F Y H:i" %}
     {% endfor %}
 </ul>
 
-<form method="post" action="{% url 'create_task' %}">
+<script>
+$(document).ready(function() {
+    $("#taskForm").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "create_task" %}',
+            data: $(this).serialize(),
+            success: function(response) {
+                if(response.status === 'ok') {
+                    $('ul').append('<li>' + response.task_description + '</li>');
+                    $("#taskForm")[0].reset();  // Clear the form fields
+                }
+            },
+            error: function(response) {
+                alert('Error: ' + response.responseJSON.errors);
+            }
+        });
+    });
+});
+</script>
+
+
+<form  id="taskForm" method="post"">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create Task</button>
