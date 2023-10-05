@@ -17,6 +17,8 @@ Time:  {% now "jS F Y H:i" %}
            {% if task.completed %}
               (Done)
            {% endif %}
+           <br>
+           <b>{{ task.group }}</b>
        </li>
     {% endfor %}
 </ul>

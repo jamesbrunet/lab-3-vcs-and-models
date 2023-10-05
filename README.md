@@ -1,6 +1,8 @@
 # lab-3-vcs-and-models
+## THE colinelliott BRANCH!
+- This is my branch and I am the owner of it and none of you can have it!
 
-## Steps to get this django app running on your own server
+### Steps to get this django app running on your own server
 
 1) Open a terminal and navigate to the folder you want to create your project in (e.g. `cd ~Documents/Code`)
 2) Clone this repository with `git clone https://github.com/Carleton-BIT/lab-3-vcs-and-models.git`
