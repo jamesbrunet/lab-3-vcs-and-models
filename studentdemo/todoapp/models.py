@@ -6,6 +6,9 @@ class Group(models.Model):
     @property
     def tasks(self):
         return Task.objects.filter(group=self)
+    
+    def __str__(self):
+        return self.name
 
 class Task(models.Model):
     description = models.CharField(max_length=255)
