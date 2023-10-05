@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+import datetime
 
 def main():
     """Run administrative tasks."""
@@ -17,6 +17,31 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+
+
+
+
+
+class Task:
+    def __init__(self, title, description):
+        self.title = title
+        self.description = description
+        self.created_time = datetime.datetime.now()
+        self.last_updated_time = self.created_time
+
+    def update(self, new_title, new_description):
+        self.title = new_title
+        self.description = new_description
+        self.last_updated_time = datetime.datetime.now()
+
+# Example usage:
+task = Task("Sample Task", "This is a sample task.")
+print("Created Time:", task.created_time)
+print("Last Updated Time:", task.last_updated_time)
+
+# Update the task
+task.update("Updated Task", "This task has been updated.")
+print("Updated Time:", task.last_updated_time)
 
 if __name__ == '__main__':
     main()
