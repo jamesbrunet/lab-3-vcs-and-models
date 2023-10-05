@@ -21,3 +21,5 @@
 12) On the terminal, navigate to `lab-3-vcs-and-models/studentdemo` and run `python manage.py migrate`
 13) Run the server by clicking the play button for the run configuration you set up
 14) Navigate to 127.0.0.1:8000! Your app should load.
+
+- Jordan was here :)
