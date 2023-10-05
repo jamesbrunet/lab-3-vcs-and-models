@@ -9,3 +9,11 @@ class Task(models.Model):
 
     def __str__(self):
         return self.description
+
+class Group(models.Model):
+    name = models.CharField(max_length=255)
+    tasks = models.ForeignKey(Task, on_delete=models.CASCADE)
+
+    @property
+    def task_count(self):
+        return self.tasks.count()
