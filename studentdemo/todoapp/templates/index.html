@@ -20,5 +20,12 @@ Time:  {% now "jS F Y H:i" %}
        </li>
     {% endfor %}
 </ul>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Task</button>
+</form>
+
 </body>
 </html>
