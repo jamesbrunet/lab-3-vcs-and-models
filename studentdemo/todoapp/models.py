@@ -2,11 +2,10 @@ from django.db import models
 
 class Group(models.Model):
     groupName = models.CharField(max_length=100)
-    numTasks = Task.
 
     @property
-    def __tasks__(self):
-        return self.numTasks
+    def numTasks(self):
+        return Task.objects.filter(group=self)
 
 
 class Task(models.Model):
