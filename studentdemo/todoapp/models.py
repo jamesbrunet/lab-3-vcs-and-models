@@ -9,3 +9,7 @@ class Task(models.Model):
 
     def __str__(self):
         return self.description
+
+class Group(models.Model):
+    name = models.CharField
+    number = models.IntegerField
