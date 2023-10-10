@@ -4,7 +4,9 @@ from django.shortcuts import render, redirect
 from .forms import TaskForm
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
+@login_required()
 def index(request):
     # Fetch Data From Model
     tasks = Task.objects.all()
