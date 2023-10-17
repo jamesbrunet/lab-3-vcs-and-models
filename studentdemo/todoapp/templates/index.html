@@ -31,13 +31,13 @@
         {% endif %}
         </h3>
         <div>Due: {{task.due_date}}</div>
-        {% if task.due_today %}
-        Due today!
+        {% if task.due_soon %}
+        Due soon! Get er done!
         {% endif %}
 {% endfor %}
 <hr>
 
-<form  id="taskForm" method="post"">
+<form method="post" action="{% url 'create_task' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create Task</button>

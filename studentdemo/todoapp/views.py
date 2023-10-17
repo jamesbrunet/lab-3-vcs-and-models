@@ -20,8 +20,10 @@ def index(request):
 @require_POST  # Ensure that only POST requests can access this view
 def create_task(request):
     form = TaskForm(request.POST)
+    print('preparing to save')
     if form.is_valid():
         task = form.save(commit=False)
         task.user = request.user
         task.save()
+        print('saved')
     return redirect('index')

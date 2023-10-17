@@ -14,5 +14,5 @@ class Task(models.Model):
         return self.description
 
     @property
-    def due_today(self):
-        return self.due_date >= timezone.now() - timezone.timedelta(days=1)
+    def due_soon(self):
+        return self.due_date <= timezone.now() + timezone.timedelta(days=1)
