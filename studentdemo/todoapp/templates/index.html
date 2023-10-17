@@ -21,21 +21,39 @@
 {% endif %}
 
 <h2>List of tasks:</h2>
-{% for task in tasks %}
-    <hr>
-        <h3>
-        {% if task.completed %}
-            <s>{{ task.description }}</s>
-        {% else %}
-            {{ task.description }}
-        {% endif %}
-        </h3>
-        <div>Due: {{task.due_date}}</div>
-        {% if task.due_today %}
-        Due today!
-        {% endif %}
-{% endfor %}
-<hr>
+<ul>
+    {% for task in tasks %}
+       <li>
+           {{ task.description }}
+           {% if task.completed %}
+              (Done)
+           {% endif %}
+       </li>
+    {% endfor %}
+</ul>
+
+<script>
+$(document).ready(function() {
+    $("#taskForm").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "create_task" %}',
+            data: $(this).serialize(),
+            success: function(response) {
+                if(response.status === 'ok') {
+                    $('ul').append('<li>' + response.task_description + '</li>');
+                    $("#taskForm")[0].reset();  // Clear the form fields
+                }
+            },
+            error: function(response) {
+                alert('Error: ' + response.responseJSON.errors);
+            }
+        });
+    });
+});
+</script>
+
 
 <form  id="taskForm" method="post"">
     {% csrf_token %}

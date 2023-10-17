@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required()
 def index(request):
+    # Fetch Data From Model
     tasks = Task.objects.filter(user=request.user)
 
     # Fetch Form from Forms
@@ -24,4 +25,6 @@ def create_task(request):
         task = form.save(commit=False)
         task.user = request.user
         task.save()
-    return redirect('index')
+        return JsonResponse({'status': 'ok', 'task_description': task.description, 'task_id': task.id})
+    else:
+        return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
